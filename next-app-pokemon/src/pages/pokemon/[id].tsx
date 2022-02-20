@@ -19,22 +19,10 @@ function Pokemon() {
   return <div>{data.name}</div>
 }
 
-export default function PokemonPage({ fallback } : InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function PokemonPage() {
   return (
-    <SWRConfig value={{ fallback }}>
+    <SWRConfig>
       <Pokemon />
     </SWRConfig>
   );
-}
-
-export async function getServerSideProps(context) {
-  const { id } = context.query;
-  const pokemons = await PokemonApi.getPokemon(`${API}/${id}`);
-  return {
-    props: {
-      fallback: {
-        [API]: pokemons
-      }
-    }
-  };
 }

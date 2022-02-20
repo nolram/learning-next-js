@@ -7,6 +7,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Pokemon } from '../types/pokemon'
 import PokemonApi  from '../services/pokemon'
+import { Table } from '../components/table'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 const API = '/api/pokemons'
@@ -26,18 +27,31 @@ function Home() {
       </Head>
 
       <main className={styles.main}>
-        {pokemons.results.map((pokemon: Pokemon) => {
-          return(
-           <li key={pokemon.name}>
-             <Link href="/pokemon/[id]" as={`/pokemon/${pokemon.id}`}>
-               <a>{`Pokemon ${pokemon.name}`}</a>
-             </Link>
-           </li>)
-         })}
+        <Table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+          {pokemons.results.map((pokemon: Pokemon) => {
+            return(
+              <tr key={pokemon.name}>
+                <td>{pokemon.name}</td>
+                <td>
+                <Link href="/pokemon/[id]" as={`/pokemon/${pokemon.id}`}>
+                  Informações
+                </Link>
+                </td>
+            </tr>)
+          })}
+          </tbody>
+         </Table>
       </main>
 
       <footer className={styles.footer}>
-        
+        @Marlon - 2022
       </footer>
     </div>
   )
