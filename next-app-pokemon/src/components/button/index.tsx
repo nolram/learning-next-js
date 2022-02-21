@@ -5,7 +5,7 @@ interface ButtonProps {
     // children: JSX.Element | JSX.Element[];
     name: string;
     disable: boolean
-  }
+}
 
 export class Button extends Component<{}, ButtonProps> {
     render() {

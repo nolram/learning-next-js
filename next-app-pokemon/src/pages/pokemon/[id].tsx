@@ -16,7 +16,7 @@ function Pokemon() {
   if (error) return <div>Failed to load user</div>
   if (!data) return <div>Loading...</div>
 
-  return <div>{data.name}</div>
+  return <div>{data.name} - <img src={data.sprites.front_default}></img></div> 
 }
 
 export default function PokemonPage() {
