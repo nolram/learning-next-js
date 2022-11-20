@@ -1,6 +1,5 @@
 import { HttpClient } from '../client/http-client-interceptor';
 import { ResponsePokemons, PokemonStats } from '../../types/pokemon';
-import { AxiosResponse } from 'axios';
 
 
 class PokemonApi extends HttpClient {
